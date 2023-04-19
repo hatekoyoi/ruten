@@ -11,6 +11,10 @@ near_jmp:
 	$(NASM) -f bin -o test/near_jmp.bin test/near_jmp.asm
 	cargo run test/near_jmp.bin
 
+modrm_test:
+	$(NASM) -f bin -o test/modrm_test.bin test/modrm_test.asm
+	cargo run test/modrm_test.bin
+
 clean:
 	rm -f test/*.bin
 	cargo clean
