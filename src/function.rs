@@ -51,3 +51,16 @@ pub fn get_memory32(emu: &mut Emulator, address: u32) -> u32 {
     }
     ret
 }
+
+pub fn push32(emu: &mut Emulator, value: u32) {
+    let address = get_register32(emu, Register::ESP as usize) - 4;
+    set_register32(emu, Register::ESP as usize, address);
+    set_memory32(emu, address, value);
+}
+
+pub fn pop32(emu: &mut Emulator) -> u32 {
+    let address = get_register32(emu, Register::ESP as usize);
+    let ret = get_memory32(emu, address) as u32;
+    set_register32(emu, Register::ESP as usize, address + 4);
+    ret
+}

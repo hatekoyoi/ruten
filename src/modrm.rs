@@ -66,7 +66,7 @@ pub fn calc_memory_address(emu: &mut Emulator, modrm: &mut ModRM) -> u32 {
             println!("not implemented ModRM mod = 1, rm = 4\n");
             process::exit(1);
         } else {
-            get_register32(emu, modrm.rm as usize) + modrm.disp8 as u32
+            (get_register32(emu, modrm.rm as usize) as i32 + modrm.disp8 as i32) as u32
         }
     } else if modrm.modval == 2 {
         if modrm.rm == 4 {

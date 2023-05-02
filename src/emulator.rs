@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io::Read;
 use std::process;
 
+#[allow(dead_code)]
 pub enum Register {
     EAX,
     ECX,
